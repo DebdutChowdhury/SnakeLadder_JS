@@ -1,13 +1,9 @@
-let constant = require('./constants')
-
+let rand = 0;
 class DiceRoll{
-    constructor(){ }
-    
-    insert(){
-        let player1 = constant.readline.question("Enter the player name: ");
-        console.log(`Player1 name ${player1}`);
-        console.log(`${player1} position now => ${constant.plr1_pos}`);
+    diceRoll(){
+        rand = Math.floor(Math.random() * 10 ) % 6 + 1;
+        return "Dice Shows : "+rand;
     }
 }
 
-module.exports = DiceRoll;
+module.exports = {DiceRoll}
