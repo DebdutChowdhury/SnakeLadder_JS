@@ -13,24 +13,33 @@ class PlayerInsert{
     
     play(){
         console.log(`position now : ${this.start}`);
-        dice = roll.diceRoll();
-        option = roll.checkOption();
-        console.log(`\nDice Rolled : ${dice}`);
-        switch(option){
-            case 1: 
-                playerPos += dice; 
-                console.log(`Yeah! You got a Ladder`);
-                break;
-            case 2:
-                playerPos -= dice;                
-                console.log(`Snake bits you`);
-                break;
-            case 3:               
-                console.log(`Pass the chance`);
-                break;
-        }
-        return `Your position is : ${playerPos}`;
-              
+        while (playerPos <= 100){
+            dice = roll.diceRoll();
+            option = roll.checkOption();
+            console.log(`\nDice Rolled : ${dice}`);
+            switch(option){
+                case 1: 
+                    playerPos += dice; 
+                    console.log(`Yeah! You got a Ladder`);
+                    break;
+                case 2:
+                    if (playerPos >= 0){
+                        playerPos -= dice;                
+                        console.log(`Snake bits you`);
+                        break;
+                    }
+                    else{
+                        playerPos = 0;
+                        console.log('Player position 0');
+                        break;
+                    }
+                case 3:               
+                    console.log(`Pass the chance`);
+                    break;
+            }
+            console.log(`Your position is : ${playerPos}`);;
+        }     
+        return playerPos
     }
 
 }
