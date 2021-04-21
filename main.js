@@ -6,7 +6,8 @@ class SnakeLadderMain{
         console.log("Welcome!! to our snake and ladder game");
         console.log("--------------------------------------");
         let snakeLadder = new playerInsert.PlayerInsert(start);
-        return snakeLadder.play();
+        console.log(snakeLadder.players());
+        return snakeLadder.plrResult();
     }
 }
 
