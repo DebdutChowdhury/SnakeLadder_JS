@@ -1,7 +1,10 @@
 let diceRoll = require('./diceRoll')
 let roll = new diceRoll.DiceRoll();
 
-let player = "player";
+let playerPos = 0;
+let player = "Player";
+let dice = 0;
+let option = 0;
 
 class PlayerInsert{
     constructor(start){
@@ -9,10 +12,27 @@ class PlayerInsert{
     }
     
     play(){
-        console.log(`position now => ${this.start}`);
-        return roll.diceRoll();
-
+        console.log(`position now : ${this.start}`);
+        dice = roll.diceRoll();
+        option = roll.checkOption();
+        console.log(`\nDice Rolled : ${dice}`);
+        switch(option){
+            case 1: 
+                playerPos += dice; 
+                console.log(`Yeah! You got a Ladder`);
+                break;
+            case 2:
+                playerPos -= dice;                
+                console.log(`Snake bits you`);
+                break;
+            case 3:               
+                console.log(`Pass the chance`);
+                break;
+        }
+        return `Your position is : ${playerPos}`;
+              
     }
+
 }
 
 module.exports = {PlayerInsert};
